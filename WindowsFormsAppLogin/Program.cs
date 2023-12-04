@@ -12,8 +12,10 @@ namespace WindowsFormsAppLogin
     {
         public static FormLogin formLogin = null;
         public static FormVasarlas formVasarlas = null;
+        public static Form_uj formuj = null;
         public static MySqlConnection connection = null;
         public static MySqlCommand command = null;
+        public static int userid;
         static void Main()
         {
             MySqlConnectionStringBuilder builder = new MySqlConnectionStringBuilder();
@@ -39,6 +41,7 @@ namespace WindowsFormsAppLogin
             Application.SetCompatibleTextRenderingDefault(false);
             formLogin = new FormLogin();
             formVasarlas = new FormVasarlas();
+            formuj = new Form_uj();
             Application.Run(formLogin);
         }
     }

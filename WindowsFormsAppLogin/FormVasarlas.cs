@@ -23,7 +23,6 @@ namespace WindowsFormsAppLogin
             InitializeComponent();
         }
 
-
         private void FormVasarlas_Load(object sender, EventArgs e)
         {
             termekekBetoltese();
@@ -65,6 +64,7 @@ namespace WindowsFormsAppLogin
             textBox2.Text = kivalasztottTermek.db.ToString();
             numericUpDown_ar.Value = (decimal) kivalasztottTermek.ar;
             numericUpDown_termekid.Value = (decimal)kivalasztottTermek.termekid;
+            numericUpDown_db.Maximum = kivalasztottTermek.db;
 
 
 
@@ -72,9 +72,9 @@ namespace WindowsFormsAppLogin
 
         private void button_vasarlas_Click(object sender, EventArgs e)
         {
-            decimal osszeg = (decimal)numericUpDown_ar.Value;
-            decimal db = (decimal)numericUpDown_db.Value;
-            numericUpDown_vegosszeg.Value = osszeg * db;
+            //decimal osszeg = (decimal)numericUpDown_ar.Value;
+           // decimal db = (decimal)numericUpDown_db.Value;
+           // numericUpDown_vegosszeg.Value = osszeg * db;
 
             string nev = textBox1.Text;
             decimal darab = numericUpDown_db.Value;
@@ -82,13 +82,14 @@ namespace WindowsFormsAppLogin
             decimal tid = numericUpDown_termekid.Value;
             
             
-            Program.command.CommandText = "INSERT INTO `rendeles`(`termekid`, `vasarloid`, `db`, `ar`) VALUES (@tid, 1 ,@db, @vegosszeg); UPDATE `termek` SET `db`=`db`-@db WHERE `termeknev` = @termeknev ";
+            Program.command.CommandText = "INSERT INTO `rendeles`(`termekid`, `vasarloid`, `db`, `ar`) VALUES (@tid, @uid ,@db, @vegosszeg); UPDATE `termek` SET `db`=`db`-@db WHERE `termeknev` = @termeknev ";
 
             Program.command.Parameters.Clear();
             Program.command.Parameters.AddWithValue("@termeknev", nev);
             Program.command.Parameters.AddWithValue("@db", darab);
             Program.command.Parameters.AddWithValue("@vegosszeg", vegosszeg);
             Program.command.Parameters.AddWithValue("@tid", tid);
+            Program.command.Parameters.AddWithValue("@uid", Program.userid);
             try
             {
                 if (Program.connection.State != ConnectionState.Open)
@@ -98,6 +99,13 @@ namespace WindowsFormsAppLogin
                 }
                 Program.command.ExecuteNonQuery();
                 MessageBox.Show("Sikeres rögzítés");
+                textBox1.Text = "";
+                textBox2.Text = "";
+                numericUpDown_ar.Value = 0;
+                numericUpDown_db.Value = 1;
+                numericUpDown_termekid.Value = 1;
+                numericUpDown_vegosszeg.Value = 0;
+                numericUpDown_ar.Value = 0;
             }
             catch (MySqlException ex)
             {
@@ -106,6 +114,16 @@ namespace WindowsFormsAppLogin
             }
         }
 
-        
+        private void numericUpDown_db_ValueChanged(object sender, EventArgs e)
+        {
+            decimal osszeg = (decimal)numericUpDown_ar.Value;
+            decimal db = (decimal)numericUpDown_db.Value;
+            numericUpDown_vegosszeg.Value = osszeg * db;
+        }
+
+        private void újToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.formuj.ShowDialog();
+        }
     }
 }
