@@ -13,6 +13,7 @@ namespace WindowsFormsAppLogin
         public static FormLogin formLogin = null;
         public static FormVasarlas formVasarlas = null;
         public static Form_uj formuj = null;
+        public static Form_delete formdelete = null;
         public static MySqlConnection connection = null;
         public static MySqlCommand command = null;
         public static int userid;
@@ -42,6 +43,7 @@ namespace WindowsFormsAppLogin
             formLogin = new FormLogin();
             formVasarlas = new FormVasarlas();
             formuj = new Form_uj();
+            formdelete = new Form_delete();
             Application.Run(formLogin);
         }
     }

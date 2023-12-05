@@ -110,6 +110,12 @@
     <Compile Include="FormVasarlas.Designer.cs">
       <DependentUpon>FormVasarlas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_delete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_delete.Designer.cs">
+      <DependentUpon>Form_delete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_uj.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormVasarlas.resx">
       <DependentUpon>FormVasarlas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_delete.resx">
+      <DependentUpon>Form_delete.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_uj.resx">
       <DependentUpon>Form_uj.cs</DependentUpon>

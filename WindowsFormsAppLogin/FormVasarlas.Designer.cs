@@ -235,6 +235,7 @@
             this.törlésToolStripMenuItem.Name = "törlésToolStripMenuItem";
             this.törlésToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.törlésToolStripMenuItem.Text = "törlés";
+            this.törlésToolStripMenuItem.Click += new System.EventHandler(this.törlésToolStripMenuItem_Click);
             // 
             // FormVasarlas
             // 

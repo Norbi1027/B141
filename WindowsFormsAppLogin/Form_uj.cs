@@ -33,6 +33,7 @@ namespace WindowsFormsAppLogin
                 }
                 Program.command.ExecuteNonQuery();
                 MessageBox.Show("Sikeres rögzítés");
+                Program.formVasarlas.termekekBetoltese();
             }
             catch (MySqlException ex)
             {

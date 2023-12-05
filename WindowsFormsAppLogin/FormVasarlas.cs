@@ -28,7 +28,7 @@ namespace WindowsFormsAppLogin
             termekekBetoltese();
         }
 
-        private void termekekBetoltese()
+        public void termekekBetoltese()
         {
             listBox_termek.Items.Clear();
             try
@@ -124,6 +124,11 @@ namespace WindowsFormsAppLogin
         private void újToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Program.formuj.ShowDialog();
+        }
+
+        private void törlésToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Program.formdelete.ShowDialog();
         }
     }
 }
